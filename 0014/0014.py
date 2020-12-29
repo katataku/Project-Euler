@@ -2,21 +2,16 @@ TAR = 1000000
 
 
 def Collatz(n):
+    nextTerm = n // 2 if n % 2 == 0 else (n * 3) + 1
     if n < TAR:
         if memo[n] == -1:
-            if n % 2 == 0:
-                memo[n] = Collatz(n // 2) + 1
-            else:
-                memo[n] = Collatz((n * 3) + 1) + 1
+            memo[n] = Collatz(nextTerm) + 1
         return memo[n]
     else:
-        if n % 2 == 0:
-            return Collatz(n // 2) + 1
-        else:
-            return Collatz((n * 3) + 1) + 1
+        return Collatz(nextTerm) + 1
 
 
-memo = [-1 for i in range(TAR + 10)]
+memo = [-1 for i in range(TAR)]
 memo[1] = 1
 
 
